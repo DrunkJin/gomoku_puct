@@ -24,6 +24,7 @@
 
 ```bash
 python main.py --board_size 19 --save_dir "./trained_models" --iterations 10 --games_per_iter 20 --mcts_sims 1000 --c_puct 1.5 --temp_cutoff 15 --batch_size 1024 --epochs 10 --learning_rate 0.0005 --eval_games 20
+```
 
 위 명령어는 다음과 같은 설정으로 실행됩니다:
 - 보드 크기: 19x19
@@ -58,7 +59,7 @@ python main.py --board_size 19 --save_dir "./trained_models" --iterations 10 --g
 
 ```bash
 python play.py --model_path "./trained_models/best_model.pth" --board_size 15 --ai_first --simulations 1500
-
+```
 
 위 명령어는 다음과 같은 설정으로 실행됩니다:
 - 모델 경로: ./trained_models/best_model.pth
