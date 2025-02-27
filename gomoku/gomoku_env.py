@@ -103,15 +103,20 @@ class GomokuState:
         # 훈련 데이터용 상태 인코딩
         return self.get_state_planes()
     
-    def display():
+    def display(self):
         # 콘솔용 보드 출력
         symbols = {0: '.', 1: '●', -1: '○'}
+        
         print('   ' + ' '.join([f'{i:2}' for i in range(self.board_size)]))
+        
+        # 보드 출력 - 점 사이 간격 늘림
         for i in range(self.board_size):
             print(f'{i:2} ', end='')
             for j in range(self.board_size):
-                print(f'{symbols[self.board[i][j]]} ', end='')
+                print(f'{symbols[self.board[i][j]]}  ', end='')  # 점 뒤에 공백 두 개로 늘림
             print()
+
+
 
 
 

@@ -108,7 +108,7 @@ class Trainer:
             value_tensor = torch.FloatTensor(np.array(values)).reshape(-1, 1).to(self.device)
 
             # 순전파
-            policy_logits, value_pred = self.network.mode(state_tensor)
+            policy_logits, value_pred = self.network.model(state_tensor)
 
             # 손실 계산
             policy_loss = F.cross_entropy(policy_logits, policy_tensor)
@@ -120,7 +120,7 @@ class Trainer:
             total_loss.backward()
             self.optimizer.step()
 
-            print(f"Epoch {epoch + 1}/{epochs}, Loss: {total_loss.item():.4f, }"
+            print(f"Epoch {epoch + 1}/{epochs}, Loss: {total_loss.item():.4f}",
                   f"Policy Loss: {policy_loss.item():.4f}, Value Loss: {value_loss.item():.4f}")
             
     def evaluate(self, old_network, num_games=20, temperature=0.1):

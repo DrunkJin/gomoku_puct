@@ -66,7 +66,7 @@ def play_game(model_path=None, board_size=15, human_first=True, num_simulations=
         # 승자 확인
         winner = state.check_winner()
         if winner != 0:
-            winner_name = player[winner]
+            winner_name = players[winner]
             print(f"\nGame Over! {winner_name} wins!")
             break
 
@@ -75,18 +75,18 @@ def play_game(model_path=None, board_size=15, human_first=True, num_simulations=
             break
 
 def main():
-    parser = argparse.ArgumentParse(description="Play Gomoku against AI")
-    parser.add.argument('--model_path', type=str, default=None, help='Path to model checkpoint')
-    parser.add.argument('--board_size', type=int, default=15, help="Board Size")
-    parser.add.argument('--ai_first', action="store_true", help='AI plays first')
-    parser.add.argument('--simulations', type=int, default=1000, help="Number of MCTS simulations")
+    parser = argparse.ArgumentParser(description="Play Gomoku against AI")
+    parser.add_argument('--model_path', type=str, default=None, help='Path to model checkpoint')
+    parser.add_argument('--board_size', type=int, default=15, help="Board Size")
+    parser.add_argument('--ai_first', action="store_true", help='AI plays first')
+    parser.add_argument('--simulations', type=int, default=1000, help="Number of MCTS simulations")
 
     args = parser.parse_args()
 
     play_game(
         model_path = args.model_path,
         board_size = args.board_size,
-        human_first=not args.ai_frist,
+        human_first=not args.ai_first,
         num_simulations=args.simulations
     )
 

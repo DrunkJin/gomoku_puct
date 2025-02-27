@@ -53,7 +53,7 @@ def train_iteration(args):
         # 이전 최고 모델과 비교
         if os.path.exists(best_model_path):
             print("Evaluationg against best model...")
-            best_network = NetWrapper(board_size=board_size, device=device)
+            best_network = NetWrapper(board_size=args.board_size, device=device)
             best_network.load_checkpoint(best_model_path)
 
             win_rate = trainer.evaluate(
